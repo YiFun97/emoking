@@ -1,9 +1,16 @@
 # Stage 1: 安装依赖
 FROM node:20-alpine AS deps
+
+# 配置阿里云 Alpine 镜像源加速
+RUN sed -i 's/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g' /etc/apk/repositories
+
 RUN apk add --no-cache libc6-compat python3 make g++
 WORKDIR /app
 
-# 复制 package 文件
+# 配置 npm 淘宝镜像源
+RUN npm config set registry https://registry.npmmirror.com
+
+# 复制 package 文件并安装依赖
 COPY package.json package-lock.json* ./
 RUN npm ci
 
@@ -11,7 +18,7 @@ RUN npm ci
 FROM node:20-alpine AS builder
 WORKDIR /app
 
-# 复制依赖
+# 复制依赖（已从 deps 阶段安装好）
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 
