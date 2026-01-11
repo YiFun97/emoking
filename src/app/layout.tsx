@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
+import { AuthModal } from "@/components/AuthModal";
 
 export const metadata: Metadata = {
   title: "Emoking - 多应用平台",
@@ -19,6 +20,7 @@ export default function RootLayout({
         <main className="pt-16">
           {children}
         </main>
+        <AuthModal />
       </body>
     </html>
   );
