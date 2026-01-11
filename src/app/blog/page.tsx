@@ -1,7 +1,6 @@
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-2xl text-3xl mb-4">
             📝
@@ -44,6 +43,6 @@ export default function BlogPage() {
           </div>
         </div>
       </div>
-    </div>
+
   );
 }
